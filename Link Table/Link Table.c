@@ -49,8 +49,7 @@ int main(){
 		printf("未找到\n");
 	printf("打印链表\n");
 	print(head);
-	int num = countNode(head);
-	printf("节点数%d\n", num);
+	printf("节点数%d\n", countNode(head));
 	
 	return 0;
 }

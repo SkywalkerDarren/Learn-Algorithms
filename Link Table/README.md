@@ -15,7 +15,7 @@
 
 双向链表克服了单链表中访问某个节点前驱节点(插入，删除操作时)，只能从头遍历的问题。
 
-```
+```c
 typedef int Value
 typedef struct Entry{
 	struct Entry *next,*prev;
