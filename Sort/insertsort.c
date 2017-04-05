@@ -39,12 +39,12 @@ void print(int array[]){
 }
 
 void insertSort(int array[]){
-    for(int i = 0; i < SIZE - 1; i++){
-        int j = i + 1;
-        for(int k = i; array[j] > array[k] && 0 != j; j--, k--){
+    int i, j;
+    for(i = 1; i < SIZE; i++){
+        for(j = i - 1; array[j] < array[j+1] && j >= 0; j--){
             int temp = array[j];
-            array[j] = array[k];
-            array[k] = temp;
+            array[j] = array[j+1];
+            array[j+1] = temp;
         }
     }    
 }
