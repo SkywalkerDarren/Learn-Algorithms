@@ -1,134 +1,149 @@
-# include <stdio.h>
-# include <malloc.h>
+#include <stdio.h>
+#include <malloc.h>
 
-
-# define HEAD 1
-# define TAIL 0
-# define FAIL 0
-# define SUSSCESS 1
-
+#define HEAD 1
+#define TAIL 0
+#define FAIL 0
+#define SUSSCESS 1
 
 typedef int Value;
-typedef struct Entry{
-	struct Entry *next,*prev;
-	Value value;
-}DoubleLink;
+typedef struct Entry
+{
+    struct Entry *next, *prev;
+    Value value;
+} DoubleLink;
 
-
-DoubleLink* create(DoubleLink* head);
-DoubleLink* insert(DoubleLink* node);
-int delete(DoubleLink* node, DoubleLink* head);
-DoubleLink* search(DoubleLink* head, Value value);
-void print(DoubleLink* start);
+DoubleLink *create(DoubleLink *head);
+DoubleLink *insert(DoubleLink *node);
+int delete (DoubleLink *node, DoubleLink *head);
+DoubleLink *search(DoubleLink *head, Value value);
+void print(DoubleLink *start);
 Value input();
-int countNode(DoubleLink* head);
+int countNode(DoubleLink *head);
 
-
-int main(){
-	DoubleLink *head = NULL;
-	Value val = 0;
-	int cnt = 0;
-	printf("åˆ›å»ºåŒå‘é“¾è¡¨\nè¾“å…¥èŠ‚ç‚¹æ•°\n");
-	scanf("%d", &cnt);
-	head = create(head);
-	for(; cnt > 1; cnt--){
-	    create(head);
+int main()
+{
+    DoubleLink *head = NULL;
+    Value val = 0;
+    int cnt = 0;
+    printf("´´½¨Ë«ÏòÁ´±í\nÊäÈë½ÚµãÊý\n");
+    scanf("%d", &cnt);
+    head = create(head);
+    for (; cnt > 1; cnt--)
+    {
+		create(head);
     }
-	printf("è¾“å…¥æœç´¢å€¼\n");
-	scanf("%d", &val);
-	DoubleLink* find = search(head, val);
-	if(find)
-		printf("æ‰¾åˆ°\n");
-		printf("æ˜¯å¦åˆ é™¤ï¼ˆy/nï¼‰");
+    printf("ÊäÈëËÑË÷Öµ\n");
+    scanf("%d", &val);
+    DoubleLink *find = search(head, val);
+    if (find)
+    {
+		printf("ÕÒµ½\n");
+		printf("ÊÇ·ñÉ¾³ý£¨y/n£©");
 		fflush(stdin);
 		char del;
 		scanf("%c", &del);
-		if('y' == del || 'Y' == del){
-		    delete(find, head);
-        }-
-		printf("æœªæ‰¾åˆ°\n");
-	printf("æ‰“å°é“¾è¡¨\n");
-	print(head);
-	printf("èŠ‚ç‚¹æ•°%d\n", countNode(head));
-	
-	return 0;
+		if ('y' == del || 'Y' == del)
+		{
+			delete (find, head);
+		}
+    }
+    else
+    {
+		printf("Î´ÕÒµ½\n");
+    }
+    printf("´òÓ¡Á´±í\n");
+    print(head);
+    printf("½ÚµãÊý%d\n", countNode(head));
+    system("PAUSE");
+
+    return 0;
 }
 
-
-Value input(){
-	Value val;
-	printf("è¾“å…¥å€¼\n");
-	scanf("%d", &val);
-	return val;
+Value input()
+{
+    Value val;
+    printf("ÊäÈëÖµ\n");
+    scanf("%d", &val);
+    return val;
 }
 
-
-DoubleLink* create(DoubleLink* head){
-	if(!head){
-		head = (DoubleLink*)malloc(sizeof(DoubleLink));
+DoubleLink *create(DoubleLink *head)
+{
+    if (!head)
+    {
+		head = (DoubleLink *)malloc(sizeof(DoubleLink));
 		head->next = head;
 		head->prev = head;
 		head->value = input();
-	}else{
+    }
+    else
+    {
 		DoubleLink *p = head->prev;
 		insert(p);
-	}
-	return head;
+    }
+    return head;
 }
 
-
-DoubleLink* insert(DoubleLink* node){
-	if(!node){
+DoubleLink *insert(DoubleLink *node)
+{
+    if (!node)
+    {
 		return NULL;
-	}
-	DoubleLink* newnode = (DoubleLink*)malloc(sizeof(DoubleLink));
-	newnode->next = node->next;
-	node->next = newnode;
-	newnode->prev = newnode->next->prev;
-	newnode->next->prev = newnode;
-	newnode->value = input();
-	return newnode;
+    }
+    DoubleLink *newnode = (DoubleLink *)malloc(sizeof(DoubleLink));
+    newnode->next = node->next;
+    node->next = newnode;
+    newnode->prev = newnode->next->prev;
+    newnode->next->prev = newnode;
+    newnode->value = input();
+    return newnode;
 }
 
-
-int delete(DoubleLink* node, DoubleLink* head){
-    if(head == node){
-        head = node->next;
+int delete (DoubleLink *node, DoubleLink *head)
+{
+    if (head == node)
+    {
+		head = node->next;
     }
     node->prev->next = node->next;
     node->next->prev = node->prev;
-	free(node);
-	return SUSSCESS;
+    free(node);
+    return SUSSCESS;
 }
 
-
-DoubleLink* search(DoubleLink* head, Value value){
-	DoubleLink* p = head;
-	do{
-		if(p->value == value){
+DoubleLink *search(DoubleLink *head, Value value)
+{
+    DoubleLink *p = head;
+    do
+    {
+		if (p->value == value)
+		{
 			return p;
 		}
 		p = p->next;
-	}while(p != head);
-	return NULL;
+    } while (p != head);
+    return NULL;
 }
 
-
-int countNode(DoubleLink* head){
+int countNode(DoubleLink *head)
+{
     int count = 0;
-    DoubleLink* p = head;
-    do{
-        p = p->next;
-        count++;
-    }while(head != p);
+    DoubleLink *p = head;
+    do
+    {
+		p = p->next;
+		count++;
+    } while (head != p);
     return count;
 }
 
-
-void print(DoubleLink* head){
-	DoubleLink* p = head;
-	do{
+void print(DoubleLink *head)
+{
+    DoubleLink *p = head;
+    do
+    {
 		printf("%d\n", p->value);
 		p = p->next;
-	}while(p != head);
+    } while (p != head);
 }

@@ -1,8 +1,9 @@
 #include <stdio.h>
 int main()
 {
-  int j;
+  printf("asdf");
   int length = 3;
+  int j;
   for (int i = 0; i < length; ++i)
   {
     for (j = i + 1; j < length; ++j)
