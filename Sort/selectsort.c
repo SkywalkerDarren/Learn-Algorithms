@@ -5,7 +5,7 @@
 # define SIZE 10
 # define MAX 200
 
-int rand();
+int random();
 void selectSort(int array[]);
 void initArray(int array[]);
 void print(int array[]);
