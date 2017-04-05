@@ -5,13 +5,14 @@
             "name": "C++ Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/build",
+            "program": "${file}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
             "environment": [],
             "externalConsole": true,
-            "preLaunchTask": "build",
+            "preLaunchTask": "gcc",
+            "miDebuggerPath": "C:/Program Files (x86)/Dev-Cpp/MinGW64/bin/gdb.exe",
             "linux": {
                 "MIMode": "gdb",
                 "setupCommands": [
