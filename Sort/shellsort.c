@@ -2,8 +2,8 @@
 # include <stdlib.h>
 # include <time.h>
 
-# define SIZE 10
-# define MAX 200
+# define SIZE 10849
+# define MAX 50000
 
 int random();
 void shellSort(int array[], int d);
@@ -43,7 +43,7 @@ void shellSort(int array[], int size){
     for(gap = size / 2; gap > 0; gap /= 2){
         for(int i = gap; i < size; i++){
             for(int j = i - gap;
-                array[j] > array[j + gap] && j >= 0;
+                 j >= 0 && array[j] > array[j + gap];
                 j -= gap)
                 {
                 int temp = array[j];
