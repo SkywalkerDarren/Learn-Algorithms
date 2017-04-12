@@ -2,7 +2,7 @@
 # include <stdlib.h>
 # include <time.h>
 
-# define SIZE 100
+# define SIZE 70
 # define MAX 200
 
 int random();
@@ -41,8 +41,9 @@ void print(int array[]){
 }
 
 void heapSort(int array[], int size){
+    minHeap(array, size);
     for(int i = size; i > 0;){
-        minHeap(array, i);
+        minHeapAdjust(array, 0, i);
         i--;
         int temp = array[0];
         array[0] = array[i];
@@ -50,24 +51,26 @@ void heapSort(int array[], int size){
     }
 }
 
-void minHeap(int array[], int size){
-    for(; size > 0;size /= 2){
-        minHeapAdjust(array, 0, size);
+void minHeap(int array[], int size){ //自下至上建小根堆
+    for(int parent = size / 2 - 1; parent >= 0; parent--){
+        minHeapAdjust(array, parent, size);
     }
 }
 
-void minHeapAdjust(int array[], int parent, int size){
-    int node;
-    for(;parent < size / 2 ;parent++){
-        int child = parent * 2 + 1;
+void minHeapAdjust(int array[], int parent, int size){ //自顶向下调整   
+    int child = parent * 2 + 1;
+    while(child < size){
         if(array[child + 1] < array[child] && child + 1 < size){
             child++;
         }
         if(array[child] < array[parent]){
-            node = array[parent];
+            int node = array[parent];
             array[parent] = array[child];
             array[child] = node;
+        }else{
+            break;
         }
+        parent = child;
+        child = parent * 2 + 1;
     }
-    
 }
