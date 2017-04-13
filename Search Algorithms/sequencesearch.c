@@ -17,7 +17,7 @@ int main(){
     int num;
     initArray(array);
     print(array);
-    printf("search a number:");
+    printf("\nsearch a number:");
     scanf("%d", &num);
     int local = sequenceSearch(array, SIZE, num);
     if(FAIL != local){
