@@ -2,8 +2,8 @@
 # include <stdlib.h>
 # include <time.h>
 
-# define SIZE 100000 //Êı×é´óĞ¡
-# define MAX 100000 //×î´óËæ»úÊı
+# define SIZE 100000 //æ•°ç»„å¤§å°
+# define MAX 100000 //æœ€å¤§éšæœºæ•°
 
 void bubbleSort(int array[], int size);
 void insertSort(int array[], int size);
@@ -26,60 +26,60 @@ int main(){
     double second;
 
     initArray(array);
-    printf("¶ÑÅÅĞò\n");
+    printf("å †æ’åº\n");
     start = clock();
     heapSort(array, SIZE);
     finish = clock();
     second = (double)(finish - start) / CLOCKS_PER_SEC;
-    printf("ºÄÊ±%fÃë\n", second);
+    printf("è€—æ—¶%fç§’\n", second);
 
     initArray(array);
-    printf("Ï£¶ûÅÅĞò\n"); 
+    printf("å¸Œå°”æ’åº\n"); 
     start = clock();
     shellSort(array, SIZE);
     finish = clock();
     second = (double)(finish - start) / CLOCKS_PER_SEC;
-    printf("ºÄÊ±%fÃë\n", second);
+    printf("è€—æ—¶%fç§’\n", second);
     
     initArray(array);
-    printf("¿ìËÙÅÅĞò\n");
+    printf("å¿«é€Ÿæ’åº\n");
     start = clock();
     qSort(array, 0, SIZE);
     finish = clock();
     second = (double)(finish - start) / CLOCKS_PER_SEC;
-    printf("ºÄÊ±%fÃë\n", second);
+    printf("è€—æ—¶%fç§’\n", second);
 
     initArray(array);
-    printf("¹é²¢ÅÅĞò\n");
+    printf("å½’å¹¶æ’åº\n");
     start = clock();
     mergeSort(array, SIZE);
     finish = clock();
     second = (double)(finish - start) / CLOCKS_PER_SEC;
-    printf("ºÄÊ±%fÃë\n", second);
+    printf("è€—æ—¶%fç§’\n", second);
 
     initArray(array);
-    printf("Ã°ÅİÅÅĞò\n");
+    printf("å†’æ³¡æ’åº\n");
     start = clock();
     bubbleSort(array, SIZE);
     finish = clock();
     second = (double)(finish - start) / CLOCKS_PER_SEC;
-    printf("ºÄÊ±%fÃë\n", second);
+    printf("è€—æ—¶%fç§’\n", second);
     
     initArray(array);
-    printf("²åÈëÅÅĞò\n");
+    printf("æ’å…¥æ’åº\n");
     start = clock();
     insertSort(array, SIZE);
     finish = clock();
     second = (double)(finish - start) / CLOCKS_PER_SEC;
-    printf("ºÄÊ±%fÃë\n", second);
+    printf("è€—æ—¶%fç§’\n", second);
 
     initArray(array);
-    printf("Ñ¡ÔñÅÅĞò\n");
+    printf("é€‰æ‹©æ’åº\n");
     start = clock();
     selectSort(array, SIZE);
     finish = clock();
     second = (double)(finish - start) / CLOCKS_PER_SEC;
-    printf("ºÄÊ±%fÃë\n", second);
+    printf("è€—æ—¶%fç§’\n", second);
 
 
     getchar();
@@ -103,7 +103,7 @@ void print(int array[]){
     }
 }
 
-//Ã°ÅİÅÅĞò
+//å†’æ³¡æ’åº
 void bubbleSort(int array[], int size){
     for(int i = 0; i < size; ++i){
         for(int j = i; j < size; ++j){
@@ -116,7 +116,7 @@ void bubbleSort(int array[], int size){
     }
 }
 
-//²åÈëÅÅĞò
+//æ’å…¥æ’åº
 void insertSort(int array[], int size){
     int i, j;
     for(i = 1; i < size; i++){
@@ -128,7 +128,7 @@ void insertSort(int array[], int size){
     }    
 }
 
-//Ñ¡ÔñÅÅĞò
+//é€‰æ‹©æ’åº
 void selectSort(int array[], int size){
     for(int i = 0; i < size; ++i){
         int min = i;
@@ -144,7 +144,7 @@ void selectSort(int array[], int size){
     }
 }
 
-//Ï£¶ûÅÅĞò
+//å¸Œå°”æ’åº
 void shellSort(int array[], int size){
     int gap = size;
     for(gap = size / 2; gap > 0; gap /= 2){
@@ -161,7 +161,7 @@ void shellSort(int array[], int size){
     }
 }
 
-//¿ìËÙÅÅĞò
+//å¿«é€Ÿæ’åº
 void qSort(int array[], int left, int right){
     if (left < right){
         int i = partion(array, left, right);
@@ -183,7 +183,7 @@ int partion(int array[], int start,int end){
     return i;
 }
 
-//¹é²¢ÅÅĞò
+//å½’å¹¶æ’åº
 void mergeSort(int array[], int size){
     if(size > 1){
         mergeSort(array, size / 2);
@@ -210,7 +210,7 @@ void mergeArray(int a[], int aSize, int b[], int bSize){
     free(temp);
 }
 
-//¶ÑÅÅĞò
+//å †æ’åº
 void heapSort(int array[], int size){
     minHeap(array, size);
     for(int i = size; i > 0;){
@@ -222,13 +222,13 @@ void heapSort(int array[], int size){
     }
 }
 
-void minHeap(int array[], int size){ //×ÔÏÂÖÁÉÏ½¨Ğ¡¸ù¶Ñ
+void minHeap(int array[], int size){ //è‡ªä¸‹è‡³ä¸Šå»ºå°æ ¹å †
     for(int parent = size / 2 - 1; parent >= 0; parent--){
         minHeapAdjust(array, parent, size);
     }
 }
 
-void minHeapAdjust(int array[], int parent, int size){ //×Ô¶¥ÏòÏÂµ÷Õû   
+void minHeapAdjust(int array[], int parent, int size){ //è‡ªé¡¶å‘ä¸‹è°ƒæ•´   
     int child = parent * 2 + 1;
     while(child < size){
         if(array[child + 1] < array[child] && child + 1 < size){
