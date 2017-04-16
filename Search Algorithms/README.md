@@ -29,7 +29,7 @@ int binary_search(int *a,int length,int k){
 	while(low<high){
 		mid = (low+high)/2;
 		if (a[mid] < k) low = mid+1;
-		if (a[mid == k]) return mid;
+		if (a[mid] == k) return mid;
 		if (a[mid] > k) high = mid-1; 
 	}
 
